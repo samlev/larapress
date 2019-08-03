@@ -12,7 +12,7 @@
 */
 
 $router->get('index', function () use ($router) {
-    return $router->app->version();
+    return view('index');
 });
 $router->get('singular', function () use ($router) {
     return 'singular.php';
@@ -26,19 +26,16 @@ $router->get('archive', function () use ($router) {
 });
 
 $router->get('single', function () use ($router) {
-    return 'single.php';
+    return view('single');
 });
 $router->get('page', function () use ($router) {
-    return 'page.php';
-});
-$router->get('home', function () use ($router) {
-    return 'home.php';
+    return view('page');
 });
 $router->get('404', function () use ($router) {
-    return '404.php';
+    return view('404');
 });
 $router->get('search', function () use ($router) {
-    return 'search.php';
+    return view('search');
 });
 
 $router->get('author-{name}', function ($name) use ($router) {

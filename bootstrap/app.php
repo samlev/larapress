@@ -2,10 +2,6 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-(new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
-    dirname(__DIR__)
-))->bootstrap();
-
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -17,7 +13,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 |
 */
 
-$app = new Laravel\Lumen\Application(
+$app = new App\Framework\Application(
     dirname(__DIR__)
 );
 
@@ -96,5 +92,6 @@ $app->router->group([
 ], function ($router) {
     require __DIR__.'/../routes/web.php';
 });
+$app->bootWordPressRouter();
 
 return $app;

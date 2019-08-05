@@ -38,6 +38,4 @@ $router->get('search', function () use ($router) {
     return view('search');
 });
 
-$router->get('author-{name}', function ($name) use ($router) {
-    return 'author-name.php - ' . $name;
-});
+$router->get('author-{name}', 'AuthorController@byName');

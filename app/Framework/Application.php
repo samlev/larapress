@@ -93,7 +93,7 @@ class Application extends BaseApplication
         }
 
         // Make the Request object
-        $request = Request::create($route);
+        $request = Request::create(get_site_url() . $route);
 
         $this->run($request);
     }

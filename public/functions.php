@@ -13,4 +13,5 @@
 
 $app = require __DIR__ . '/../bootstrap/app.php';
 
+$app->bootWordPressRouter();
 $app->boot();

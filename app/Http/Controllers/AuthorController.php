@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use Corcel\Model\User;
 use Illuminate\Http\Request;
 
 /**
@@ -22,7 +23,13 @@ class AuthorController extends Controller
      * @param string $name
      */
     public function byName(Request $request, string $name) {
-        dump($request, $name);
+        if (is_author($name)) {
+            $author = User::find(\get_the_author_meta('ID'));
+
+            return view('author', ['author' => $author, 'posts' => $this->collectPosts()]);
+        }
+
+        return response('No author found', 400);
     }
 }
 

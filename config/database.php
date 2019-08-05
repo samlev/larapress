@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => 'wordpress',
 
     /*
     |--------------------------------------------------------------------------
@@ -35,7 +35,7 @@ return [
 
     'connections' => [
 
-        'mysql' => [
+        'wordpress' => [
             'driver' => 'mysql',
             'host' => DB_HOST,
             'port' => 3306,
@@ -43,7 +43,6 @@ return [
             'username' => DB_USER,
             'password' => DB_PASSWORD,
             'charset' => DB_CHARSET,
-            'collation' => DB_COLLATE,
             'prefix' => $table_prefix,
         ],
     ],

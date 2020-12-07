@@ -3,16 +3,14 @@
 @section('content')
   @include('partials.page-header')
 
-  @if (!have_posts())
+  @if ($posts->count())
+    @foreach ($posts as $post)
+      <h2><a href="{{ $post->url }}">{{ $post->title }}</a></h2>
+      <div class="post-body">{!! $post->post_excerpt ?: wp_trim_excerpt($post->post_content) !!}</div>
+    @endforeach
+  @else
     <div class="alert alert-warning">
       {{ __('Sorry, no results were found.', 'larapress') }}
     </div>
-    {!! get_search_form(false) !!}
   @endif
-
-  @while (have_posts()) @php the_post() @endphp
-    @include('partials.content-'.get_post_type())
-  @endwhile
-
-  {!! get_the_posts_navigation() !!}
 @endsection

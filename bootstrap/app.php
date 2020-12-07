@@ -1,6 +1,8 @@
 <?php
 
-require_once __DIR__.'/../vendor/autoload.php';
+use App\Framework\Mix;
+
+require_once __DIR__ . '/../vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +44,10 @@ $app->singleton(
     App\Console\Kernel::class
 );
 
+$app->singleton(
+    Mix::class
+);
+
 /*
 |--------------------------------------------------------------------------
 | Register Middleware
@@ -76,6 +82,39 @@ $app->singleton(
 $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(Corcel\Laravel\CorcelServiceProvider::class);
+
+/*
+ * Recreate some helper functions from Laravel
+ */
+if (! function_exists('public_path')) {
+    /**
+     * Get the path to the public folder.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    function public_path($path = '')
+    {
+        return app()->make('path.public').($path ? DIRECTORY_SEPARATOR.ltrim($path, DIRECTORY_SEPARATOR) : $path);
+    }
+}
+
+if (! function_exists('mix')) {
+    /**
+     * Get the path to a versioned Mix file.
+     *
+     * @param  string  $path
+     * @param  string  $manifestDirectory
+     * @return \Illuminate\Support\HtmlString|string
+     *
+     * @throws \Exception
+     */
+    function mix($path, $manifestDirectory = '')
+    {
+        return app(Mix::class)(...func_get_args());
+    }
+}
+
 
 /*
 |--------------------------------------------------------------------------

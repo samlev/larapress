@@ -11,12 +11,8 @@
 |
 */
 
-$router->get('index', function () use ($router) {
-    return view('index');
-});
-$router->get('singular', function () use ($router) {
-    return 'singular.php';
-});
+$router->get('index', 'IndexController@list');
+$router->get('single', 'PostController@single');
 
 $router->get('archive-post', function () use ($router) {
     return 'archive-post.php';
@@ -25,12 +21,7 @@ $router->get('archive', function () use ($router) {
     return 'archive.php';
 });
 
-$router->get('single', function () use ($router) {
-    return view('single');
-});
-$router->get('page', function () use ($router) {
-    return view('page');
-});
+$router->get('page', 'PostController@page');
 $router->get('404', function () use ($router) {
     return view('404');
 });

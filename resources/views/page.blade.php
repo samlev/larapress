@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-  @while(have_posts()) @php the_post() @endphp
-    @include('partials.page-header')
-    @include('partials.content-page')
-  @endwhile
+  @if(isset($post))
+    <h2>{{ $post->title }}</h2>
+    <div class="post-body">{!! $post->content !!}</div>
+  @endif
 @endsection

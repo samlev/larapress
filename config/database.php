@@ -2,6 +2,8 @@
 
 $table_prefix = isset($table_prefix) ? $table_prefix : 'wp_';
 
+global $wpdb;
+
 return [
 
     /*
@@ -36,14 +38,16 @@ return [
     'connections' => [
 
         'wordpress' => [
-            'driver' => 'mysql',
+            'driver' => 'mysqli',
             'host' => DB_HOST,
             'port' => 3306,
             'database' => DB_NAME,
             'username' => DB_USER,
             'password' => DB_PASSWORD,
-            'charset' => DB_CHARSET,
             'prefix' => $table_prefix,
+
+            // directly inject the MySQLi connection from WordPress
+            'connection' => $wpdb->dbh,
         ],
     ],
 

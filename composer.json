@@ -7,7 +7,8 @@
     "require": {
         "php": ">=7.2",
         "jgrossi/corcel": "^5.0.0",
-        "laravel/lumen-framework": "^8.0"
+        "laravel/lumen-framework": "^8.0",
+        "shakahl/laravel-eloquent-mysqli": "9999999-dev"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.4",
@@ -39,5 +40,11 @@
         "optimize-autoloader": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/samlev/laravel-eloquent-mysqli"
+        }
+    ]
 }

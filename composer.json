@@ -6,8 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=7.2",
-        "jgrossi/corcel": "^4.0.0",
-        "laravel/lumen-framework": "^7.0"
+        "jgrossi/corcel": "^5.0.0",
+        "laravel/lumen-framework": "^8.0"
     },
     "require-dev": {
         "fzaninotto/faker": "^1.4",

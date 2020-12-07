@@ -3,11 +3,11 @@
 @section('content')
   @include('partials.page-header')
 
-  <h1>All posts by {{ $author->user_nicename }}</h1>
+  <h2>All posts by {{ $author->user_nicename }}</h2>
 
   @if ($posts->count())
     @foreach ($posts as $post)
-      <h2><a href="{{ $post->url }}">{{ $post->title }}</a></h2>
+      <h3><a href="{{ $post->url }}">{{ $post->title }}</a></h3>
       <div class="post-body">{!! $post->post_excerpt ?: wp_trim_excerpt($post->post_content) !!}</div>
     @endforeach
   @else

@@ -2,7 +2,7 @@
 
 @section('content')
   @if(isset($post))
-    <h2>{{ $post->title }}</h2>
+    <h1>{{ $post->title }}</h1>
     <div class="post-body">{!! $post->content !!}</div>
   @endif
 @endsection

@@ -2,6 +2,24 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-.banner {
-  @apply bg-blue-100;
+h1 {
+  @apply text-3xl font-bold mb-2;
+}
+h2 {
+  @apply text-2xl font-bold mb-2;
+}
+h3 {
+  @apply text-xl font-bold mb-2;
+}
+a {
+  @apply text-blue-600;
+}
+a:visited {
+  @apply text-purple-600;
+}
+a:hover {
+  @apply underline text-blue-500;
+}
+p {
+  @apply mb-2;
 }

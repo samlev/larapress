@@ -5,7 +5,7 @@
 
   <h1>All posts by {{ $author->user_nicename }}</h1>
 
-  @if (count($posts))
+  @if ($posts->count())
     @foreach ($posts as $post)
         <h2>{{ $post->title }}</h2>
         <div class="post-body">{!! $post->content !!}</div>
@@ -14,5 +14,3 @@
     This author has no public posts
   @endif
 @endsection
-
-

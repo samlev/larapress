@@ -1,6 +1,7 @@
 <?php
 
 use App\Framework\Mix;
+use Illuminate\Container\Container;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -82,21 +83,6 @@ $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(Corcel\Laravel\CorcelServiceProvider::class);
 $app->register(LaravelEloquentMySQLi\MySQLiServiceProvider::class);
 
-/*
- * Recreate some helper functions from Laravel
- */
-if (! function_exists('public_path')) {
-    /**
-     * Get the path to the public folder.
-     *
-     * @param  string  $path
-     * @return string
-     */
-    function public_path($path = '')
-    {
-        return app()->make('path.public').($path ? DIRECTORY_SEPARATOR.ltrim($path, DIRECTORY_SEPARATOR) : $path);
-    }
-}
 
 if (! function_exists('mix')) {
     /**
@@ -111,6 +97,39 @@ if (! function_exists('mix')) {
     function mix($path, $manifestDirectory = '')
     {
         return app(Mix::class)(...func_get_args());
+    }
+}
+/*
+ * Recreate some helper functions from Laravel
+ */
+if (! function_exists('public_path')) {
+    /**
+     * Get the path to the public folder.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    function public_path($path = '')
+    {
+        return realpath(__DIR__ . '/../public') . ($path ? DIRECTORY_SEPARATOR.ltrim($path, DIRECTORY_SEPARATOR) : $path);
+    }
+}
+
+if (! function_exists('app')) {
+    /**
+     * Get the available container instance.
+     *
+     * @param  string|null  $make
+     * @param  array  $parameters
+     * @return mixed|\Laravel\Lumen\Application
+     */
+    function app($make = null, array $parameters = [])
+    {
+        if (is_null($make)) {
+            return Container::getInstance();
+        }
+
+        return Container::getInstance()->make($make, $parameters);
     }
 }
 

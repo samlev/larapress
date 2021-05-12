@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.0.4",
-    "postcss": "^8.1.14",
+    "postcss": "^8.2.10",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.1"
   }
 }

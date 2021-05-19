@@ -5,7 +5,7 @@ require('laravel-mix-purgecss');
 
 mix
     .postCss('resources/css/style.css', 'public/dist/css')
-    .tailwind('./tailwind.js');
+    .tailwind('./tailwind.config.js');
 
 if (mix.inProduction()) {
     mix.version();
